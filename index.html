@@ -36,12 +36,7 @@
       <label for="name">Residential Student Population</label>
       <input type="text" id="ResStuPop" name="ResStuPop" placeholder="Enter Student Population">
 
-      <label for="email">email</label>
-      <input type="email" id="email" name="email" placeholder="Your email..">
-
-      <label for="message">Subject</label>
-      <textarea id="message" name="message" placeholder="Write something.." style="height:200px"></textarea>
-
+      
       <button id="submit_msg" type="button">Submit</button>
     </form>
   </body>
@@ -50,13 +45,12 @@
   <script type="text/javascript">
     (function() {
       var firebaseConfig = {
-        apiKey: "AIzaSyDkSrYYvFWILqdDoR7EZXEHYnYaRHE5sRc",
-        authDomain: "test-project-1da79.firebaseapp.com",
-        databaseURL: "https://test-project-1da79.firebaseio.com",
-        projectId: "test-project-1da79",
-        storageBucket: "test-project-1da79.appspot.com",
-        messagingSenderId: "1000904167202",
-        appId: "1:1000904167202:web:4be8aeda422da522"
+        apiKey: "AIzaSyAdC_F6vZblWqDKwwsN-GZUU9FpsTetFZA",
+        authDomain: "covid-dashboard-f47ce.firebaseapp.com",
+        projectId: "covid-dashboard-f47ce",
+        storageBucket: "covid-dashboard-f47ce.appspot.com",
+        messagingSenderId: "401683634457",
+        appId: "1:401683634457:web:291628b8920661f2ec8d88"
       };
 
       firebase.initializeApp(firebaseConfig);
@@ -65,10 +59,8 @@
         alert("Thanks for sending a message. I'll try and get back to you as soon as possible.")
         var db = firebase.firestore();
 
-        db.collection("messages").add({
+        db.collection("SHAW_data").add({
             name: data["name"],
-            email: data["email"],
-            message: data["msg"],
             timestamp: Date.now()
         })
         .then(function(docRef) {
@@ -80,21 +72,19 @@
         });
       }
 
-      var contact_submit = function(){
-        var name = document.getElementById("name");
-        var email = document.getElementById("email");
-        var msg = document.getElementById("message");
+      var data_submit = function(){
+        var ResStuPop = document.getElementById("name");
+
 
         var data = {
-          "name": name.value,
-          "email": email.value,
-          "msg": msg.value
+          "ResStuPop": ResStuPop.value,
+
         }
         push_to_firebase(data);
 
       }
 
-      document.getElementById("submit_msg").addEventListener("click", contact_submit);
+      document.getElementById("submit_msg").addEventListener("click", data_submit);
     })();
   </script>
 </html>
