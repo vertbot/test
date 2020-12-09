@@ -60,7 +60,7 @@
         var db = firebase.firestore();
 
         db.collection("SHAW_data").add({
-            name: data["name"],
+            ResStuPop: data["ResStuPop"],
             timestamp: Date.now()
         })
         .then(function(docRef) {
@@ -73,7 +73,7 @@
       }
 
       var data_submit = function(){
-        var ResStuPop = document.getElementById("name");
+        var ResStuPop = document.getElementById("ResStuPop");
 
 
         var data = {
